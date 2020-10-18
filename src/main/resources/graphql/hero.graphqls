@@ -1,0 +1,14 @@
+type Hero {
+ id: ID!
+ name: String!
+ pets: [Pet]
+}
+
+extend type Query {
+  heroes: [Hero]!
+  hero(id: ID!): Hero
+}
+
+extend type Mutation {
+  createHero(name: String!, petIds: [ID]!): Hero!
+}
