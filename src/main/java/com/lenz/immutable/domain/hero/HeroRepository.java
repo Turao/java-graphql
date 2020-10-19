@@ -1,4 +1,4 @@
-package com.lenz.immutable.hero;
+package com.lenz.immutable.domain.hero;
 
 import java.util.UUID;
 

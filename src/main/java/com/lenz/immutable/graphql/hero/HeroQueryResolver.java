@@ -1,8 +1,10 @@
-package com.lenz.immutable.hero;
+package com.lenz.immutable.graphql.hero;
 
 import java.util.UUID;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.lenz.immutable.domain.hero.Hero;
+import com.lenz.immutable.domain.hero.HeroRepository;
 
 import org.springframework.stereotype.Component;
 

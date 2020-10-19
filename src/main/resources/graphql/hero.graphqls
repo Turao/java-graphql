@@ -1,14 +1,44 @@
 type Hero {
- id: ID!
- name: String!
- pets: [Pet]
+  id: ID!
+  name: String!
+  health: Int!
 }
 
 extend type Query {
-  heroes: [Hero]!
+  heroes: [Hero!]!
   hero(id: ID!): Hero
 }
 
 extend type Mutation {
-  createHero(name: String!, petIds: [ID]!): Hero!
+  createHero(input: CreateHeroInput): CreateHeroPayload
+  updateHero(input: UpdateHeroInput): UpdateHeroPayload
+  killHero(input: KillHeroInput): KillHeroPayload
+}
+
+# Create Hero
+input CreateHeroInput {
+  name: String!
+}
+
+type CreateHeroPayload {
+  hero: Hero
+}
+
+# Updatet Hero
+input UpdateHeroInput {
+  id: ID!
+  name: String!
+}
+
+type UpdateHeroPayload {
+  hero: Hero!
+}
+
+# Kill Hero
+input KillHeroInput {
+  id: ID!
+}
+
+type KillHeroPayload {
+  hero: Hero!
 }

@@ -1,17 +1,12 @@
-package com.lenz.immutable.hero;
+package com.lenz.immutable.domain.hero;
 
-import java.util.Collection;
 import java.util.UUID;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.lenz.immutable.pet.Pet;
 
 @Entity
 @Table(name = "hero")
@@ -22,26 +17,36 @@ public class Hero {
 
   private String name;
 
-  @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
-  private Collection<Pet> pets;
+  private Long health;
 
   public Hero() {}
 
-  public Hero(UUID id, String name, Collection<Pet> pets) {
+  public Hero(UUID id, String name, Long health) {
     this.id = id;
     this.name = name;
-    this.pets = pets;
+    this.health = health;
   }
 
-  public UUID getId() {
+  public UUID id() {
     return this.id;
   }
 
-  public String getName() {
+  public String name() {
     return this.name;
   }
 
-  public Collection<Pet> getPets() {
-    return this.pets;
+  public Hero name(String name) {
+    this.name = name;
+    return this;
   }
+
+  public Long health() {
+    return health;
+  }
+
+  public Hero health(Long health) {
+    this.health = health;
+    return this;
+  }
+
 }
